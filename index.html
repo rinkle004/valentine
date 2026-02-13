@@ -1,224 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>For Gursewak ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-  --pink:#ff4d6d;
-  --pink2:#ff7aa2;
-  --lav:#7b5cff;
-  --card: rgba(255,255,255,0.12);
-  --border: rgba(255,255,255,0.18);
-  --text: rgba(255,255,255,0.93);
-  --muted: rgba(255,255,255,0.72);
-  --shadow: 0 18px 55px rgba(0,0,0,0.35);
-}
-
-*{ box-sizing:border-box; }
-
 body{
   margin:0;
-  min-height:100vh;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   text-align:center;
-  color: var(--text);
-  padding: 40px 18px 80px;
+  color:white;
+  background: linear-gradient(45deg,#ff4d6d,#7b5cff);
+  padding:30px;
   overflow-x:hidden;
-
-  background:
-    radial-gradient(1100px 700px at 15% 10%, rgba(255,77,109,0.28), transparent 60%),
-    radial-gradient(1000px 700px at 85% 30%, rgba(123,92,255,0.22), transparent 55%),
-    linear-gradient(180deg, #0b0b12 0%, #11111a 55%, #0b0b12 100%);
-}
-
-/* Soft floating sparkle dots */
-body::before{
-  content:"";
-  position: fixed;
-  inset:0;
-  pointer-events:none;
-  background-image:
-    radial-gradient(circle at 12% 20%, rgba(255,122,162,0.18) 0 2px, transparent 3px),
-    radial-gradient(circle at 68% 30%, rgba(255,77,109,0.16) 0 2px, transparent 3px),
-    radial-gradient(circle at 35% 70%, rgba(255,122,162,0.14) 0 2px, transparent 3px),
-    radial-gradient(circle at 78% 78%, rgba(123,92,255,0.14) 0 2px, transparent 3px);
-  background-size: 140px 140px;
-  opacity: 0.85;
-}
-
-.wrap{
-  width: min(900px, 94vw);
-  margin: 0 auto;
-}
-
-h1{
-  margin: 4px 0 6px;
-  font-size: clamp(30px, 4vw, 52px);
-  letter-spacing: -0.6px;
-}
-
-.sub{
-  margin-bottom: 18px;
-  color: var(--muted);
 }
 
 .card{
-  background: var(--card);
-  padding: 22px 20px;
-  border-radius: 28px;
-  margin: 16px auto;
-  max-width: 800px;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.15);
+  padding:20px;
+  border-radius:20px;
+  margin:20px auto;
+  max-width:750px;
+  backdrop-filter: blur(10px);
 }
 
-.card h2{
-  margin: 0 0 10px;
-}
-
-/* Main image */
-.heroImg{
+img{
   width:100%;
-  max-height: 380px;
-  object-fit: cover;
-  border-radius: 20px;
-  margin-top: 10px;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  border-radius:15px;
+  margin-top:10px;
 }
 
-/* 4 Photo Gallery */
-.gallery{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.gallery img{
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.gallery img:hover{
-  transform: scale(1.05);
-  box-shadow: 0 25px 55px rgba(0,0,0,0.45);
-}
-
-@media (max-width:600px){
-  .gallery{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Buttons */
 button{
-  padding: 12px 20px;
-  border-radius: 999px;
-  margin: 8px;
+  padding:10px 18px;
+  border:none;
+  border-radius:25px;
+  margin:8px;
   font-weight:bold;
   cursor:pointer;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.1);
-  color:white;
-  transition: all .2s ease;
 }
 
-button:hover{
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.18);
+.yes{ background:white; color:#ff4d6d; }
+.no{ background:rgba(255,255,255,0.3); color:white; }
+
+#typeText{
+  font-size:18px;
+  font-weight:bold;
+  margin-top:15px;
 }
 
-.yes{
-  background: linear-gradient(135deg, var(--pink), #ff2b57);
-  border:none;
-}
-
-.no{
-  background: rgba(255,255,255,0.12);
-}
-
-/* Floating hearts */
 .heart{
   position:fixed;
   bottom:-20px;
   font-size:22px;
-  animation: floatUp 7s linear forwards;
+  animation: floatUp 6s linear forwards;
 }
 
 @keyframes floatUp{
   from{ transform:translateY(0); }
-  to{ transform:translateY(-120vh); opacity:0; }
-}
-
-/* Modal */
-.modal{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 18px;
-  z-index: 50;
-}
-.hidden{ display:none; }
-
-.modalCard{
-  width: min(520px, 94vw);
-  background: rgba(15,15,22,0.95);
-  border-radius: 24px;
-  padding: 18px;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: var(--shadow);
-}
-
-.close{
-  float:right;
-  background:none;
-  border:none;
-  color:white;
-  font-size:18px;
-  cursor:pointer;
+  to{ transform:translateY(-110vh); opacity:0; }
 }
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-<h1>Happy Valentine's Day, Baby ❤️</h1>
-<p class="sub">From your Cutest Girlfriend 💕</p>
+<h1>Happy Valentine's Day, Gursewak ❤️</h1>
+<p>From your Rinkle 💕</p>
 
 <div class="card">
-  <img class="heroImg" src="photo1.jpg">
+  <img src="photo1.jpg">
   <p id="typeText"></p>
-</div>
-
-<!-- 4 Photo Gallery -->
-<div class="card">
-  <h2>Our Moments 📸💞</h2>
-  <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-    <img src="photo4.jpg">
-  </div>
 </div>
 
 <div class="card">
   <h2>My Love Letter 💌</h2>
   <p>
-  Baby, even though we are in different countries today,
+  Gursewak, even though we are in different countries today,
   my heart still feels closest to you.
   You are my comfort, my safe place, and the person I want
   to build my future with.
@@ -249,59 +107,56 @@ button:hover{
 
 <div class="card">
   <h2>Open When... 💌</h2>
-  <button onclick="openModal('When you miss me 🥺','I am always thinking about you ❤️')">You miss me</button>
-  <button onclick="openModal('When you feel low 🌧️','You are stronger than you think 💪')">You feel low</button>
-  <button onclick="openModal('When you doubt us 💭','I choose you. Always. 💘')">You doubt us</button>
-  <button onclick="openModal('When you feel happy 😭💞','Remember I am smiling somewhere because of you 😭💞')">You feel happy</button>
+  <button onclick="alert('When you miss me: I am always thinking about you ❤️')">You miss me</button>
+  <button onclick="alert('When you feel low: You are stronger than you think 💪')">You feel low</button>
+  <button onclick="alert('When you doubt us: I choose you. Always. 💘')">You doubt us</button>
+  <button onclick="alert('When you feel happy: Remember I am smiling somewhere because of you 😭💞')">You feel happy</button>
 </div>
 
+<div class="card">
+  <h2>Play Our Song 🎵</h2>
+  <button onclick="toggleMusic()">Play / Pause Music</button>
 </div>
 
-<!-- Modal -->
-<div class="modal hidden" id="modal">
-  <div class="modalCard">
-    <button class="close" onclick="closeModal()">✕</button>
-    <h3 id="modalTitle"></h3>
-    <p id="modalText"></p>
-    <button class="yes" onclick="closeModal()">Okay baby 🥰</button>
-  </div>
-</div>
+<audio id="song">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-// Typewriter
+
+// Typewriter effect
 const text="No matter how far you are, my heart still sleeps next to yours. I am lucky you are mine. ❤️";
 let i=0;
 function typeEffect(){
   if(i<text.length){
     document.getElementById("typeText").innerHTML+=text.charAt(i);
     i++;
-    setTimeout(typeEffect,45);
+    setTimeout(typeEffect,50);
   }
 }
 typeEffect();
 
-// Yes
+// Yes button
 function yesClick(){
-  openModal("Yayyy 😭❤️","I knew it! I love you so much! Now you're officially my Valentine 💘");
+  alert("Yayyy 😭❤️ I knew it! I love you so much!");
   burstHearts();
 }
 
-// No stays inside screen
+// No button runs away
 const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",moveNo);
 function moveNo(){
-  const w=noBtn.offsetWidth;
-  const h=noBtn.offsetHeight;
-  const x=Math.random()*(window.innerWidth-w-20);
-  const y=Math.random()*(window.innerHeight-h-20);
+  const x=Math.random()*window.innerWidth;
+  const y=Math.random()*window.innerHeight;
   noBtn.style.position="fixed";
   noBtn.style.left=x+"px";
   noBtn.style.top=y+"px";
 }
 
-// Slider
+// Love slider
 const slider=document.getElementById("loveSlider");
 const result=document.getElementById("loveResult");
+
 slider.addEventListener("input",function(){
   if(slider.value<40){
     result.innerHTML="Hmm… suspicious 🤨";
@@ -316,43 +171,70 @@ slider.addEventListener("input",function(){
 function kiss(){
   document.getElementById("kissMsg").innerHTML=
   "Muahhh 💋 I owe you a real one when we meet.";
-  burstHearts();
+}
+
+// Music
+const music=document.getElementById("song");
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
 }
 
 // Floating hearts
 function createHeart(){
   const heart=document.createElement("div");
   heart.className="heart";
-  heart.innerHTML=["❤️","💖","💘","💕"][Math.floor(Math.random()*4)];
+  heart.innerHTML="❤️";
   heart.style.left=Math.random()*100+"vw";
   document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),7000);
+  setTimeout(()=>heart.remove(),6000);
 }
-setInterval(createHeart,900);
+setInterval(createHeart,800);
 
 function burstHearts(){
   for(let i=0;i<20;i++){
-    setTimeout(createHeart,i*80);
+    setTimeout(createHeart,i*100);
   }
 }
 
-// Modal
-const modal=document.getElementById("modal");
-function openModal(title,text){
-  document.getElementById("modalTitle").innerText=title;
-  document.getElementById("modalText").innerText=text;
-  modal.classList.remove("hidden");
-}
-function closeModal(){
-  modal.classList.add("hidden");
-}
-modal.addEventListener("click",(e)=>{
-  if(e.target===modal) closeModal();
-});
+// Dramatic popup
+setTimeout(()=>{
+  alert("Imagine me looking at you right now and saying… I’m lucky you’re mine. 💘");
+},8000);
+
 </script>
 
 </body>
 </html>
+
+  
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  
