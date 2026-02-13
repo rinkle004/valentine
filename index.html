@@ -1,435 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Gursewak ❤️</title>
+<meta charset="UTF-8">
+<title>For Gursewak ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --glass: rgba(255,255,255,0.18);
-      --glass2: rgba(255,255,255,0.10);
-      --text: #ffffff;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-    *{box-sizing:border-box;}
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at top left, #ff6aa2, #7b5cff, #111);
-      overflow-x:hidden;
-    }
-    .wrap{
-      width:min(920px, 92vw);
-      margin: 24px auto 60px;
-    }
-    .topbar{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom: 16px;
-    }
-    .badge{
-      padding:10px 14px;
-      border-radius: 999px;
-      background: var(--glass);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .btnrow{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
-    button{
-      border:none;
-      border-radius: 999px;
-      padding: 10px 14px;
-      cursor:pointer;
-      font-weight:700;
-      background: rgba(255,255,255,0.9);
-      color:#111;
-      transition: transform .12s ease, filter .12s ease;
-    }
-    button:hover{transform: translateY(-1px);}
-    button:active{transform: translateY(1px);}
-    .btn-ghost{
-      background: var(--glass);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(10px);
-    }
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  text-align:center;
+  color:white;
+  background: linear-gradient(45deg,#ff4d6d,#7b5cff);
+  padding:30px;
+  overflow-x:hidden;
+}
 
-    .card{
-      background: var(--glass);
-      border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(14px);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-      overflow:hidden;
-    }
+.card {
+  background: rgba(255,255,255,0.15);
+  padding:20px;
+  border-radius:20px;
+  margin:20px auto;
+  max-width:700px;
+  backdrop-filter: blur(10px);
+}
 
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:18px;
-      align-items:center;
-    }
-    @media (max-width: 820px){
-      .hero{grid-template-columns: 1fr; }
-      .btnrow{justify-content:flex-start;}
-    }
+img {
+  width:100%;
+  border-radius:15px;
+  margin-top:10px;
+}
 
-    h1{
-      margin: 6px 0 8px;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height:1.08;
-    }
-    .sub{
-      margin: 0 0 14px;
-      font-size: 15px;
-      opacity: 0.95;
-    }
-    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px;}
-    .chip{
-      background: var(--glass2);
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 10px 12px;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 13px;
-    }
+button {
+  padding:10px 18px;
+  border:none;
+  border-radius:25px;
+  margin:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .photo{
-      width:100%;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
-      display:block;
-      object-fit:cover;
-      max-height: 360px;
-    }
+.yes { background:white; color:#ff4d6d; }
+.no { background:rgba(255,255,255,0.3); color:white; }
 
-    .section{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-    }
-    @media (max-width: 820px){
-      .section{grid-template-columns: 1fr;}
-    }
+#typeText {
+  font-size:18px;
+  font-weight:bold;
+  margin-top:15px;
+}
 
-    h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: 0.2px;
-    }
-    p{margin: 0 0 10px; line-height: 1.55;}
-    .small{opacity:0.95; font-size: 14px;}
+.heart {
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation: floatUp 6s linear forwards;
+}
 
-    .list{
-      margin:0;
-      padding-left: 18px;
-      line-height: 1.6;
-    }
-    .list li{margin: 6px 0;}
-
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,0.18);
-      margin: 14px 0;
-    }
-
-    .qa{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top: 10px;
-    }
-    .btn-yes{background:#fff; color:#111;}
-    .btn-no{
-      background: rgba(255,255,255,0.22);
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-
-    /* Modal */
-    .modal-backdrop{
-      position: fixed;
-      inset:0;
-      background: rgba(0,0,0,0.55);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      z-index: 999;
-    }
-    .modal{
-      width: min(640px, 92vw);
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.28);
-      backdrop-filter: blur(18px);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-    .modal h3{margin: 0 0 8px; font-size: 20px;}
-    .close{
-      float:right;
-      background: rgba(255,255,255,0.22);
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.25);
-    }
-
-    /* Floating hearts */
-    .heart{
-      position: fixed;
-      bottom: -30px;
-      font-size: 22px;
-      pointer-events:none;
-      z-index: 50;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-      animation: floatUp linear forwards;
-    }
-    @keyframes floatUp{
-      from{ transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.95;}
-      to{ transform: translateY(-110vh) translateX(var(--drift)) rotate(22deg); opacity: 0;}
-    }
-
-    /* Toast */
-    .toast{
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(14px);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 999px;
-      box-shadow: var(--shadow);
-      display:none;
-      z-index: 1000;
-      font-weight: 600;
-    }
-  </style>
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-110vh); opacity:0; }
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
 
-    <div class="topbar">
-      <div class="badge">💘 For <span id="name">Gursewak</span></div>
+<h1>Happy Valentine's Day, Gursewak ❤️</h1>
+<p>From your Rinkle 💕</p>
 
-      <div class="btnrow">
-        <button class="btn-ghost" id="musicBtn">▶️ Play music</button>
-        <button class="btn-ghost" id="surpriseBtn">🎁 Open surprise</button>
-      </div>
-    </div>
+<div class="card">
+  <img src="photo1.jpg">
+  
+  <p id="typeText"></p>
+</div>
 
-    <div class="card hero">
-      <div>
-        <h1>Hey Baby ❤️</h1>
-        <p class="sub">Even from far away, you’re my comfort, my smile, my favourite person.</p>
+<div class="card">
+  <h2>Will you be my Valentine? 😌</h2>
+  <button class="yes" onclick="yesClick()">Yes 💘</button>
+  <button class="no" id="noBtn">No 🙈</button>
+</div>
 
-        <div class="chips">
-          <div class="chip">🌍 Distance can’t reduce love</div>
-          <div class="chip">🫶 You are my safe place</div>
-          <div class="chip">✨ I choose you—always</div>
-        </div>
+<div class="card">
+  <h2>How much do you love me? 😏</h2>
+  <input type="range" min="0" max="100" value="50" id="loveSlider" style="width:100%;">
+  <p id="loveResult"></p>
+</div>
 
-        <div class="divider"></div>
+<div class="card">
+  <h2>Send me a virtual kiss 😘</h2>
+  <button onclick="kiss()">Click here 💋</button>
+  <p id="kissMsg"></p>
+</div>
 
-        <h2>My love letter 💌</h2>
-        <p class="small">
-          Baby, I don’t need a special day to love you… but I’ll still use this day to remind you:
-          you matter to me so much. Thank you for being you. Thank you for holding my heart so gently.
-          I’m proud of us, and I’m proud of you.
-        </p>
-        <p class="small">
-          When you read this, just know—there’s someone sitting far away, smiling like crazy because it’s you. ❤️
-        </p>
+<div class="card">
+  <h2>Open When... 💌</h2>
+  <button onclick="alert('When you miss me: I am always thinking about you ❤️')">You miss me</button>
+  <button onclick="alert('When you feel low: You are stronger than you think 💪')">You feel low</button>
+  <button onclick="alert('When you doubt us: I choose you. Always. 💘')">You doubt us</button>
+</div>
 
-        <div class="divider"></div>
+<script>
 
-        <h2>Quick question 😌</h2>
-        <p class="small">Will you be my Valentine?</p>
-        <div class="qa">
-          <button class="btn-yes" id="yesBtn">Yes 💘</button>
-          <button class="btn-no" id="noBtn">No 🙈</button>
-        </div>
-      </div>
+// Romantic typewriter text
+const text = "No matter how far you are, my heart still feels closest to yours. I choose you. Always. ❤️";
+let i = 0;
+function typeEffect(){
+  if(i < text.length){
+    document.getElementById("typeText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  }
+}
+typeEffect();
 
-      <div>
-        <!-- Your photo file name must be photo1.jpg in the repo -->
-        <img class="photo" src="photo1.jpg" alt="Our Photo" />
-      </div>
-    </div>
+// Yes button
+function yesClick(){
+  alert("Yayyy 😭❤️ I knew it! I love you so much!");
+  burstHearts();
+}
 
-    <div class="section">
-      <div class="card">
-        <h2>Reasons I love you 🥹</h2>
-        <ul class="list small">
-          <li>You make me feel understood.</li>
-          <li>You feel like home to my heart.</li>
-          <li>You support me in your own way.</li>
-          <li>Your presence calms my overthinking.</li>
-          <li>I love the way we laugh together.</li>
-        </ul>
-        <div class="divider"></div>
-        <button class="btn-ghost" id="moreReasonsBtn">➕ Show more reasons</button>
-        <div id="moreReasons" style="display:none; margin-top:10px;">
-          <ul class="list small">
-            <li>I love your vibe.</li>
-            <li>I love how you handle life.</li>
-            <li>I love how you matter to me.</li>
-            <li>I love our future we’re building.</li>
-          </ul>
-        </div>
-      </div>
+// No button runs away
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", moveNo);
+function moveNo(){
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
 
-      <div class="card">
-        <h2>3 promises from me 🤍</h2>
-        <ul class="list small">
-          <li>I’ll always respect you and your feelings.</li>
-          <li>I’ll communicate—no silent games.</li>
-          <li>I’ll keep choosing “us”, even on hard days.</li>
-        </ul>
-        <div class="divider"></div>
-        <p class="small">If you ever feel low, read this line:</p>
-        <p class="small" style="font-weight:800;">“You’re loved, you’re enough, and you’re mine.” ❤️</p>
-      </div>
-    </div>
+// Love slider
+const slider = document.getElementById("loveSlider");
+const result = document.getElementById("loveResult");
 
-  </div>
+slider.addEventListener("input", function(){
+  if(slider.value < 40){
+    result.innerHTML = "Hmm… suspicious 🤨";
+  } else if(slider.value < 80){
+    result.innerHTML = "Okayyy I see you 😌❤️";
+  } else {
+    result.innerHTML = "OBSESSED WITH ME 😭💘";
+  }
+});
 
-  <!-- Modal Surprise -->
-  <div class="modal-backdrop" id="backdrop">
-    <div class="modal">
-      <button class="close" id="closeBtn">✖ Close</button>
-      <h3>Surprise for you 🎁</h3>
-      <p class="small">
-        I made this little website only for you.
-        Whenever you miss me, open this link and remember:
-        I’m always with you—bas thoda door. ❤️
-      </p>
-      <div class="divider"></div>
-      <p class="small"><b>Secret message:</b> You are my favourite notification. 😭💘</p>
-    </div>
-  </div>
+// Kiss
+function kiss(){
+  document.getElementById("kissMsg").innerHTML =
+    "Muahhh 💋 I owe you a real one when we meet.";
+}
 
-  <div class="toast" id="toast"></div>
+// Floating hearts
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,800);
 
-  <!-- Music (upload song.mp3 to the repo if you want music) -->
-  <audio id="song" preload="auto">
-    <source src="song.mp3" type="audio/mpeg" />
-  </audio>
+function burstHearts(){
+  for(let i=0;i<20;i++){
+    setTimeout(createHeart,i*100);
+  }
+}
 
-  <script>
-    // Toast helper
-    const toast = document.getElementById("toast");
-    function showToast(msg){
-      toast.textContent = msg;
-      toast.style.display = "block";
-      clearTimeout(window.__t);
-      window.__t = setTimeout(()=> toast.style.display="none", 2200);
-    }
+// Dramatic popup
+setTimeout(()=>{
+  alert("Imagine me looking at you right now and saying… I’m lucky you’re mine. 💘");
+}, 8000);
 
-    // Music toggle (works because user clicks button)
-    const song = document.getElementById("song");
-    const musicBtn = document.getElementById("musicBtn");
-    let playing = false;
+</script>
 
-    musicBtn.addEventListener("click", async () => {
-      try{
-        if(!playing){
-          await song.play();
-          playing = true;
-          musicBtn.textContent = "⏸ Pause music";
-          showToast("Music on 💞");
-        }else{
-          song.pause();
-          playing = false;
-          musicBtn.textContent = "▶️ Play music";
-          showToast("Music paused");
-        }
-      }catch(e){
-        showToast("Upload song.mp3 to enable music 🎵");
-      }
-    });
-
-    // Surprise modal
-    const backdrop = document.getElementById("backdrop");
-    document.getElementById("surpriseBtn").addEventListener("click", ()=> {
-      backdrop.style.display = "flex";
-      burstHearts(18);
-    });
-    document.getElementById("closeBtn").addEventListener("click", ()=> backdrop.style.display="none");
-    backdrop.addEventListener("click", (e)=> { if(e.target === backdrop) backdrop.style.display="none"; });
-
-    // More reasons toggle
-    const more = document.getElementById("moreReasons");
-    document.getElementById("moreReasonsBtn").addEventListener("click", ()=>{
-      const open = more.style.display === "block";
-      more.style.display = open ? "none" : "block";
-      showToast(open ? "Okay 😌" : "More love unlocked 💗");
-    });
-
-    // Cute "No" button that runs away
-    const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("click", moveNo);
-    function moveNo(){
-      const maxX = window.innerWidth - 120;
-      const maxY = window.innerHeight - 80;
-      const x = Math.max(10, Math.random()*maxX);
-      const y = Math.max(10, Math.random()*maxY);
-      noBtn.style.position = "fixed";
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-      showToast("No is not an option 🙈💘");
-      burstHearts(6);
-    }
-
-    // Yes button
-    document.getElementById("yesBtn").addEventListener("click", ()=>{
-      showToast("Yayyy! I knew it 😭❤️");
-      burstHearts(28);
-      setTimeout(()=> {
-        backdrop.style.display = "flex";
-      }, 500);
-    });
-
-    // Floating hearts (continuous + burst)
-    const heartEmojis = ["❤️","💖","💘","💗","💞"];
-    function makeHeart(){
-      const h = document.createElement("div");
-      h.className = "heart";
-      h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
-      h.style.left = (Math.random()*100) + "vw";
-      h.style.setProperty("--drift", (Math.random()*120 - 60) + "px");
-      h.style.animationDuration = (5 + Math.random()*3) + "s";
-      h.style.fontSize = (18 + Math.random()*18) + "px";
-      document.body.appendChild(h);
-      setTimeout(()=> h.remove(), 9000);
-    }
-    setInterval(makeHeart, 700);
-
-    function burstHearts(n){
-      for(let i=0;i<n;i++){
-        setTimeout(makeHeart, i*60);
-      }
-    }
-  </script>
 </body>
 </html>
