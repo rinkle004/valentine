@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
+body{
   margin:0;
   font-family: Arial, sans-serif;
   text-align:center;
@@ -16,62 +16,75 @@ body {
   overflow-x:hidden;
 }
 
-.card {
+.card{
   background: rgba(255,255,255,0.15);
   padding:20px;
   border-radius:20px;
   margin:20px auto;
-  max-width:700px;
+  max-width:750px;
   backdrop-filter: blur(10px);
 }
 
-img {
+img{
   width:100%;
   border-radius:15px;
   margin-top:10px;
 }
 
-button {
+button{
   padding:10px 18px;
   border:none;
   border-radius:25px;
-  margin:10px;
+  margin:8px;
   font-weight:bold;
   cursor:pointer;
 }
 
-.yes { background:white; color:#ff4d6d; }
-.no { background:rgba(255,255,255,0.3); color:white; }
+.yes{ background:white; color:#ff4d6d; }
+.no{ background:rgba(255,255,255,0.3); color:white; }
 
-#typeText {
+#typeText{
   font-size:18px;
   font-weight:bold;
   margin-top:15px;
 }
 
-.heart {
+.heart{
   position:fixed;
   bottom:-20px;
   font-size:22px;
   animation: floatUp 6s linear forwards;
 }
 
-@keyframes floatUp {
-  from { transform: translateY(0); }
-  to { transform: translateY(-110vh); opacity:0; }
+@keyframes floatUp{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-110vh); opacity:0; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Happy Valentine's Day, Gursewak ❤️</h1>
-<p>From your Rinkle 💕</p>
+<h1>Happy Valentine's Day, Baby ❤️</h1>
+<p>From your Cutest Girlfriend 💕</p>
 
 <div class="card">
   <img src="photo1.jpg">
-  
   <p id="typeText"></p>
+</div>
+
+<div class="card">
+  <h2>My Love Letter 💌</h2>
+  <p>
+  Baby, even though we are in different countries today,
+  my heart still feels closest to you.
+  You are my comfort, my safe place, and the person I want
+  to build my future with.
+  </p>
+  <p>
+  Distance is temporary… but what I feel for you is not.
+  I choose you. Always. ♾️❤️
+  </p>
 </div>
 
 <div class="card">
@@ -97,18 +110,28 @@ button {
   <button onclick="alert('When you miss me: I am always thinking about you ❤️')">You miss me</button>
   <button onclick="alert('When you feel low: You are stronger than you think 💪')">You feel low</button>
   <button onclick="alert('When you doubt us: I choose you. Always. 💘')">You doubt us</button>
+  <button onclick="alert('When you feel happy: Remember I am smiling somewhere because of you 😭💞')">You feel happy</button>
 </div>
+
+<div class="card">
+  <h2>Play Our Song 🎵</h2>
+  <button onclick="toggleMusic()">Play / Pause Music</button>
+</div>
+
+<audio id="song">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
-// Romantic typewriter text
-const text = "No matter how far you are, my heart still feels closest to yours. I choose you. Always. ❤️";
-let i = 0;
+// Typewriter effect
+const text="No matter how far you are, my heart still sleeps next to yours. I am lucky you are mine. ❤️";
+let i=0;
 function typeEffect(){
-  if(i < text.length){
-    document.getElementById("typeText").innerHTML += text.charAt(i);
+  if(i<text.length){
+    document.getElementById("typeText").innerHTML+=text.charAt(i);
     i++;
-    setTimeout(typeEffect, 50);
+    setTimeout(typeEffect,50);
   }
 }
 typeEffect();
@@ -120,42 +143,52 @@ function yesClick(){
 }
 
 // No button runs away
-const noBtn = document.getElementById("noBtn");
-noBtn.addEventListener("mouseover", moveNo);
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",moveNo);
 function moveNo(){
-  const x = Math.random() * window.innerWidth;
-  const y = Math.random() * window.innerHeight;
-  noBtn.style.position = "fixed";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  const x=Math.random()*window.innerWidth;
+  const y=Math.random()*window.innerHeight;
+  noBtn.style.position="fixed";
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
 }
 
 // Love slider
-const slider = document.getElementById("loveSlider");
-const result = document.getElementById("loveResult");
+const slider=document.getElementById("loveSlider");
+const result=document.getElementById("loveResult");
 
-slider.addEventListener("input", function(){
-  if(slider.value < 40){
-    result.innerHTML = "Hmm… suspicious 🤨";
-  } else if(slider.value < 80){
-    result.innerHTML = "Okayyy I see you 😌❤️";
-  } else {
-    result.innerHTML = "OBSESSED WITH ME 😭💘";
+slider.addEventListener("input",function(){
+  if(slider.value<40){
+    result.innerHTML="Hmm… suspicious 🤨";
+  }else if(slider.value<80){
+    result.innerHTML="Okayyy I see you 😌❤️";
+  }else{
+    result.innerHTML="OBSESSED WITH ME 😭💘";
   }
 });
 
 // Kiss
 function kiss(){
-  document.getElementById("kissMsg").innerHTML =
-    "Muahhh 💋 I owe you a real one when we meet.";
+  document.getElementById("kissMsg").innerHTML=
+  "Muahhh 💋 I owe you a real one when we meet.";
+}
+
+// Music
+const music=document.getElementById("song");
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
 }
 
 // Floating hearts
 function createHeart(){
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
   document.body.appendChild(heart);
   setTimeout(()=>heart.remove(),6000);
 }
@@ -170,9 +203,23 @@ function burstHearts(){
 // Dramatic popup
 setTimeout(()=>{
   alert("Imagine me looking at you right now and saying… I’m lucky you’re mine. 💘");
-}, 8000);
+},8000);
 
 </script>
 
 </body>
 </html>
+ 
+
+
+ 
+
+
+
+
+
+   
+
+
+
+
