@@ -8,12 +8,28 @@
 <style>
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   text-align:center;
   color:white;
-  background: linear-gradient(45deg,#ff4d6d,#7b5cff);
   padding:30px;
   overflow-x:hidden;
+
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 105, 180, 0.25), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(255, 77, 109, 0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(123, 92, 255, 0.2), transparent 45%),
+    linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+}
+
+  body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity:0.4;
 }
 
 .card{
